@@ -1,9 +1,12 @@
 ## Management  System
 본 프로젝트는 React Node.js 공부용 고객관리 시스템 (Management System)입니다.
 
-Git commit , push 
-Function Component , props 상속
-Component 구조화 , map 함수를 이용한 Component 간략화
+Git commit , push \
+Function Component , props 상속 \
+Component 구조화 , map 함수를 이용한 Component 간략화 \
+Apply Material UI \
+
+
 
 
 # Getting Started with Create React App
