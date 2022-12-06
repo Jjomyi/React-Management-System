@@ -5,6 +5,7 @@ Git commit , push \
 Function Component , props 상속 \
 Component 구조화 , map 함수를 이용한 Component 간략화 \
 Apply Material UI \
+client , server 폴더 분리 / Node.js Express Server 적용 
 
 
 
