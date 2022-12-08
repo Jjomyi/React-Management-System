@@ -6,11 +6,14 @@ import TableHead from "@mui/material/TableHead"
 import TableBody from "@mui/material/TableBody"
 import TableRow from "@mui/material/TableRow"
 import TableCell from "@mui/material/TableCell"
+import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect, useState } from 'react';
 
 function App() {
 
-  const [customersData, setCustomersData] = useState([]);
+  const [customers, setCustomers] = useState("");
+  const [completed, setCompleted] = useState(0);
+  const [isLoad, setIsLoad] = useState(false);
 
   const callApi = async () => {
   const response = await fetch('/api/customers');
@@ -19,10 +22,23 @@ function App() {
   };
 
   useEffect(() => {
-    callApi().then((data) => setCustomersData(data));
-  }, [] );
-  console.log(customersData); 
-
+    let complete = 0;
+    let timer = setInterval(() => {
+      if (complete >= 100) {
+        complete = 0
+      } else {
+        complete += 1;
+      }
+      setCompleted(complete);
+      if (isLoad) {
+        clearInterval(timer);
+      }
+    }, 20);
+    callApi().then(res => {
+      setCustomers(res);
+    }).
+      catch(err => console.log(err));
+  }, [isLoad]);
 
   return (
       <Paper>
@@ -38,8 +54,8 @@ function App() {
           </TableRow>
         </TableHead>
         <TableBody>
-          { customersData ?
-            customersData.map(c => { return ( 
+          { customers ?
+            customers.map(c => { return ( 
             <Customer 
             key = {c.id } 
             id = {c.id}
@@ -48,7 +64,12 @@ function App() {
             birthday = {c.birthday}
             gender = {c.gender}
             job = {c.job}
-            />)}) : ""
+            />)}) : 
+            <TableRow>
+              <TableCell colSpan={6} align = "center">
+                <CircularProgress variant="indeterminate" value = {completed}/>
+              </TableCell>
+            </TableRow>
           }
         </TableBody>
         </Table>
