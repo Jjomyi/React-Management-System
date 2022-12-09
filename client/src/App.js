@@ -8,6 +8,7 @@ import TableRow from "@mui/material/TableRow"
 import TableCell from "@mui/material/TableCell"
 import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect, useState } from 'react';
+import CustomerAdd from './components/CustomerAdd';
 
 function App() {
 
@@ -41,6 +42,7 @@ function App() {
   }, [isLoad]);
 
   return (
+    <div>
       <Paper>
         <Table>
         <TableHead>
@@ -74,6 +76,8 @@ function App() {
         </TableBody>
         </Table>
       </Paper>
+      <CustomerAdd />
+    </div>
   );
 }
 
