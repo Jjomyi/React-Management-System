@@ -1,5 +1,6 @@
 import './App.css';
 import Customer from './components/Customer';
+import CustomerAdd from './components/CustomerAdd';
 import Paper from "@mui/material/Paper"
 import Table from "@mui/material/Table"
 import TableHead from "@mui/material/TableHead"
@@ -8,7 +9,6 @@ import TableRow from "@mui/material/TableRow"
 import TableCell from "@mui/material/TableCell"
 import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect, useState } from 'react';
-import CustomerAdd from './components/CustomerAdd';
 
 function App() {
 
@@ -80,5 +80,4 @@ function App() {
     </div>
   );
 }
-
 export default App;
