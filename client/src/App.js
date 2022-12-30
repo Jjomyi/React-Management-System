@@ -59,7 +59,7 @@ function App() {
           { customers ?
             customers.map(c => { return ( 
             <Customer 
-            key = {c.id } 
+            key = {c.id} 
             id = {c.id}
             image = {c.image}
             name = {c.name}

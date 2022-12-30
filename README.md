@@ -21,7 +21,12 @@
 8.4 SELECT 데이터 조회 \
 8.5 UPDATE 데이터 수정 
 9. \
-9.1 이벤트 핸들링 
+9.1 이벤트 핸들링 \
+9.2 폼 데이터 보낼시 유저 정보 추가 \
+9.3 class component -> function component 로 변환 (handleSubmit,handleFileChange,handleValueChange,addCustomer) \
+9.4 server post sql db 작성 \
+10. \
+
 
 
 
