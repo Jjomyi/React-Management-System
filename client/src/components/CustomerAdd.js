@@ -10,7 +10,7 @@ const CustomerAdd = () => {
   const [gender,setGender] = useState('')
   const [job,setJob] = useState('')
     
-
+  const [a,seta] = useState('')
   const handleSubmit = e => {
     e.preventDefault();
     addCustomer()
