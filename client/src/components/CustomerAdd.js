@@ -2,22 +2,20 @@ import React from "react"
 import axios from "axios"
 import { useState } from "react"
 
-const CustomerAdd = () => {
+const CustomerAdd = (props) => {
   const [file,setFile] = useState(null)
   const [fileName,setFileName] = useState('')
   const [userName,setUserName] = useState('')
   const [birthday,setBirthday] = useState('')
   const [gender,setGender] = useState('')
   const [job,setJob] = useState('')
-    
-  const [a,seta] = useState('')
+  
   const handleSubmit = e => {
     e.preventDefault();
     addCustomer()
     .then(res => {
-      let copy = res[copy]
-      res = [...copy]
       console.log(res.data)
+      props.stateRefresh()
     })
     setFile(file)
     setUserName(userName)
@@ -25,7 +23,6 @@ const CustomerAdd = () => {
     setGender(gender)
     setJob(job)
     setFileName(fileName)
-    window.location.reload() 
   }
   const handleFileChange = e => {
     setFile(e.target.files[0])

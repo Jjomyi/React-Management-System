@@ -26,6 +26,9 @@
 9.3 class component -> function component 로 변환 (handleSubmit,handleFileChange,handleValueChange,addCustomer) \
 9.4 server post sql db 작성 \
 10. \
+10.1 부모 컴포넌트의 state 변경을 통한 고객 정보 갱신 \
+
+
 
 
 

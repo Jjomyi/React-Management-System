@@ -11,15 +11,31 @@ import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect, useState } from 'react';
 
 function App() {
-
+  
   const [customers, setCustomers] = useState("");
   const [completed, setCompleted] = useState(0);
+
+  const stateRefresh = () => {
+    setCustomers(customers)
+    setCompleted(completed)
+    callApi()
+      .then(res => setCustomers(res))
+      .catch(err => console.log(err))
+  }
+
+
+
+
+
+
+
+
   const [isLoad, setIsLoad] = useState(false);
 
   const callApi = async () => {
-  const response = await fetch('/api/customers');
-  const body = await response.json();
-  return body;
+    const response = await fetch('/api/customers');
+    const body = await response.json();
+    return body;
   };
 
   useEffect(() => {
@@ -76,7 +92,7 @@ function App() {
         </TableBody>
         </Table>
       </Paper>
-      <CustomerAdd />
+      <CustomerAdd stateRefresh = {stateRefresh}/>
     </div>
   );
 }
