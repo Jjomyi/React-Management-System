@@ -9,11 +9,11 @@ import TableRow from "@mui/material/TableRow"
 import TableCell from "@mui/material/TableCell"
 import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect, useState } from 'react';
+
 function App() {
-  
   const [customers, setCustomers] = useState("");
   const [completed, setCompleted] = useState(0);
-
+  
   const stateRefresh = () => {
     setCustomers(customers)
     setCompleted(completed)
@@ -28,6 +28,9 @@ function App() {
     const body = await response.json();
     return body;
   };
+  const handleValueChange = (e) => {
+    console.log(e.target.value)
+  }
 
   useEffect(() => {
     let complete = 0;
@@ -50,6 +53,13 @@ function App() {
 
   return (
     <div>
+      <div className='main-title'>
+        <h3>고객 관리 시스템</h3>
+        <div className='main-right'>
+        <input type = "text" placeholder='검색하기' onChange={handleValueChange}/>
+        </div>
+      </div>
+
       <Paper>
         <Table>
         <TableHead>

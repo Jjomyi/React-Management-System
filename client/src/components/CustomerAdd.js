@@ -8,6 +8,7 @@ import TextField from "@mui/material/TextField"
 import DialogActions from "@mui/material/DialogActions";
 import { useState } from "react"
 
+
 const CustomerAdd = (props) => {
   const [file,setFile] = useState(null)
   const [fileName,setFileName] = useState('')
@@ -69,7 +70,7 @@ const CustomerAdd = (props) => {
   }
   
   return(
-    <div>
+    <div className="marginoo">
       <Button variant="contained" color = "primary" onClick={handleClickOpen}> 고객 추가하기 </Button>
       <Dialog onClose={handleClose} open={open}>
         <DialogTitle>고객 추가</DialogTitle>
