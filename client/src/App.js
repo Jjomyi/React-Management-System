@@ -9,7 +9,6 @@ import TableRow from "@mui/material/TableRow"
 import TableCell from "@mui/material/TableCell"
 import CircularProgress from '@mui/material/CircularProgress';
 import { useEffect, useState } from 'react';
-
 function App() {
   
   const [customers, setCustomers] = useState("");
@@ -86,7 +85,7 @@ function App() {
         </TableBody>
         </Table>
       </Paper>
-      <CustomerAdd stateRefresh = {stateRefresh}/>
+      <CustomerAdd stateRefresh = {stateRefresh} />
     </div>
   );
 }

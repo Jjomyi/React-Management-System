@@ -1,5 +1,11 @@
-import React from "react"
+import React, { useEffect } from "react"
 import axios from "axios"
+import Button from "@mui/material/Button"
+import Dialog from '@mui/material/Dialog';
+import DialogTitle from "@mui/material/DialogTitle"
+import DialogContent from "@mui/material/DialogContent"
+import TextField from "@mui/material/TextField"
+import DialogActions from "@mui/material/DialogActions";
 import { useState } from "react"
 
 const CustomerAdd = (props) => {
@@ -9,6 +15,8 @@ const CustomerAdd = (props) => {
   const [birthday,setBirthday] = useState('')
   const [gender,setGender] = useState('')
   const [job,setJob] = useState('')
+  const [open,setOpen] = useState(false)
+  
   
   const handleSubmit = e => {
     e.preventDefault();
@@ -23,7 +31,9 @@ const CustomerAdd = (props) => {
     setGender(gender)
     setJob(job)
     setFileName(fileName)
+    setOpen(false)
   }
+
   const handleFileChange = e => {
     setFile(e.target.files[0])
     setFileName(e.target.value)
@@ -50,18 +60,33 @@ const CustomerAdd = (props) => {
     formData.append('job', job)
     return axios.post(url, formData)
   }
-  
+
+  const handleClickOpen = () => {
+    setOpen(true)
+   }
+  const handleClose = () => {
+    setOpen(false)
+  }
   
   return(
-        <form onSubmit={handleSubmit}>
-          <h1>고객 추가</h1>
-          프로필 이미지: <input type="file" name="file" file = {file} value = {fileName} onChange={handleFileChange}/> <br/>
-          이름: <input type="text" name="userName" value={userName} onChange = {handleValueChange}/> <br/>
-          생년월일: <input type="text" name="birthday" value={birthday} onChange={handleValueChange}/><br/>
-          성별: <input type="text" name="gender" value={gender} onChange={handleValueChange}/><br/>
-          직업: <input type="text" name="job" value={job} onChange={handleValueChange}/><br/>
-          <button type="submit">추가하기</button>
-        </form>
+    <div>
+      <Button variant="contained" color = "primary" onClick={handleClickOpen}> 고객 추가하기 </Button>
+      <Dialog onClose={handleClose} open={open}>
+        <DialogTitle>고객 추가</DialogTitle>
+        <DialogContent>
+          <input type="file" name="file" file = {file} value = {fileName} onChange={handleFileChange}/> <br/>
+          <br/>
+          <TextField label = "이름" type="text" name="userName" value={userName} onChange = {handleValueChange}/> <br/>
+          <TextField label = "생년월일" type="text" name="birthday" value={birthday} onChange={handleValueChange}/> <br/>
+          <TextField label = "성별" type="text" name="gender" value={gender} onChange={handleValueChange}/> <br/>
+          <TextField label = "직업" type="text" name="job" value={job} onChange={handleValueChange}/> <br/> 
+        </DialogContent>
+        <DialogActions>
+          <Button variant="contained" color = "primary" onClick={handleSubmit}> 추가 </Button>
+          <Button variant="outlined" color = "primary" onClick={handleClose}> 닫기 </Button>
+        </DialogActions>
+      </Dialog>        
+    </div>
     )   
 }
 export default CustomerAdd;
