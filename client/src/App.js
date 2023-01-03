@@ -22,14 +22,6 @@ function App() {
       .then(res => setCustomers(res))
       .catch(err => console.log(err))
   }
-
-
-
-
-
-
-
-
   const [isLoad, setIsLoad] = useState(false);
 
   const callApi = async () => {
@@ -69,6 +61,7 @@ function App() {
             <TableCell>생년월일</TableCell>
             <TableCell>성별</TableCell>
             <TableCell>직업</TableCell>
+            <TableCell>설정</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -82,6 +75,7 @@ function App() {
             birthday = {c.birthday}
             gender = {c.gender}
             job = {c.job}
+            stateRefresh = {stateRefresh}
             />)}) : 
             <TableRow>
               <TableCell colSpan={6} align = "center">
